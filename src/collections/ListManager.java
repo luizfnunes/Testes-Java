@@ -37,5 +37,19 @@ public class ListManager {
         for(String nome : nomes2){
             System.out.println(nome);
         }
+        System.out.println("######!!!!#######");
+        // List com objects
+        Celular cel1 = new Celular("Iphone X","12345");
+        Celular cel2 = new Celular("Sansung Galaxy","98765");
+        Celular cel3 = new Celular("Moto G","12345");
+        List<Celular> celularList = new ArrayList<>();
+        celularList.add(cel1);
+        celularList.add(cel2);
+        celularList.add(cel3);
+        for(Celular cel: celularList){
+            System.out.println(cel);
+        }
+        System.out.println(celularList.get(0).equals(cel1));
+        System.out.println(celularList.contains(cel2));
     }
 }
