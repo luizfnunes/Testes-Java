@@ -12,7 +12,8 @@ public class TesteConexao {
         //deletar();
         //atualizar();
         //System.out.println(selecionaTudo());
-        System.out.println(buscaPorNome("za"));
+        //System.out.println(buscaPorNome("za"));
+        CompradorDB.selectMetaData();
     }
 
     public static void inserir(){
@@ -38,4 +39,5 @@ public class TesteConexao {
     public static List<Comprador> buscaPorNome(String nome){
         return CompradorDB.searchByName(nome);
     }
+
 }

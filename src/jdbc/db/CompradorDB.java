@@ -3,10 +3,7 @@ package jdbc.db;
 import jdbc.classes.Comprador;
 import jdbc.conn.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,5 +88,25 @@ public class CompradorDB {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void selectMetaData(){
+        String sql = "SELECT * from `agencia`.`comprador`";
+        Connection conn = ConnectionFactory.getConnection();
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet resultSet = stmt.executeQuery(sql);
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            resultSet.next();
+            int qtdColumn = metaData.getColumnCount();
+            for(int i = 1; i <= qtdColumn;i++){
+                System.out.println(metaData.getTableName(i));
+                System.out.println(metaData.getColumnName(i));
+                System.out.println(metaData.getColumnDisplaySize(i));
+            }
+            ConnectionFactory.close(conn,stmt,resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
